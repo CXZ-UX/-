@@ -1,0 +1,58 @@
+/* 基础布局 */
+* { box-sizing: border-box; }
+body { margin: 0; font-family: "Segoe UI", "Noto Sans SC", Arial, sans-serif; background: #0f1115; color: #eaeaea; }
+
+.app-header { display: flex; align-items: center; justify-content: space-between; padding: 16px 24px; border-bottom: 1px solid #222; }
+.app-header h1 { margin: 0; font-size: 20px; }
+.actions { display: flex; gap: 12px; align-items: center; }
+
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 8px 14px; border-radius: 8px; border: 1px solid #333; color: #eaeaea; background: #1a1d22; cursor: pointer; }
+.btn.primary { background: #0ea5e9; color: #001018; border-color: #0ea5e9; }
+.btn:active { transform: translateY(1px); }
+
+.controls { display: flex; flex-wrap: wrap; gap: 18px; align-items: center; justify-content: center; padding: 12px 16px; border-bottom: 1px solid #222; }
+.control { display: inline-flex; align-items: center; gap: 10px; }
+.control input[type="text"] { width: 280px; padding: 8px 10px; border-radius: 8px; border: 1px solid #333; background: #14171b; color: #eee; }
+
+/* 画廊：居中卡片（遵循用户偏好） */
+.gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 18px; padding: 18px; max-width: 1200px; margin: 0 auto; }
+.card { position: relative; background: #0b0d10; border: 1px solid #1f2329; border-radius: 12px; overflow: hidden; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+.card .preview-wrap { position: relative; width: 100%; display: flex; align-items: center; justify-content: center; background: #111; }
+.card img { max-width: 100%; display: block; }
+
+/* 水印预览覆盖层，居中对齐 */
+.overlay { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; pointer-events: none; }
+.overlay .time { font-weight: 600; letter-spacing: 1px; text-align: center; }
+.overlay .meta { display: inline-flex; align-items: center; justify-content: center; gap: 16px; }
+.overlay .dot { width: 10px; height: 10px; border-radius: 50%; background: #ff2ea6; display: inline-block; }
+
+/* 卡片底部编辑区（居中） */
+.edit { width: 100%; padding: 12px; display: flex; flex-direction: column; gap: 8px; align-items: center; justify-content: center; background: #0f1115; }
+.edit .row { display: flex; gap: 10px; align-items: center; justify-content: center; flex-wrap: wrap; }
+.edit input { padding: 8px 10px; border-radius: 8px; border: 1px solid #333; background: #14171b; color: #eee; }
+.edit .small { font-size: 12px; opacity: 0.8; }
+
+/* 导出遮罩 */
+.exporting { position: fixed; inset: 0; background: rgba(0,0,0,0.5); display: none; align-items: center; justify-content: center; font-size: 18px; }
+.exporting.show { display: flex; }
+
+/* 美化与辅助样式 */
+body { background: radial-gradient(1200px 600px at 50% -10%, #12151a 0%, #0f1115 40%, #0a0c0f 100%); }
+#preview.preview-wrap { border-radius: 12px; box-shadow: 0 20px 40px rgba(0,0,0,0.35), inset 0 0 0 1px #1f2329; }
+.btn:hover { filter: brightness(1.06); }
+.btn.primary:hover { filter: brightness(1.12); }
+.muted { color: #9aa0a6; font-size: 12px; }
+.badge { background: #1f2937; color: #eaeaea; border: 1px solid #2f3b4a; padding: 4px 10px; border-radius: 999px; font-size: 12px; }
+.steps { display: flex; gap: 8px; align-items: center; justify-content: center; color: #bfc7d5; margin-bottom: 10px; }
+.steps .step { padding: 4px 10px; border: 1px solid #2f3b4a; border-radius: 999px; background: #0b0d10; font-size: 12px; }
+
+/* 单张预览布局 */
+.viewer { max-width: 980px; margin: 16px auto; padding: 0 16px; display: flex; flex-direction: column; gap: 12px; align-items: center; justify-content: center; }
+.toolbar { display: flex; gap: 12px; align-items: center; justify-content: center; }
+#preview.preview-wrap { position: relative; width: 100%; max-width: 980px; background: #111; display: flex; align-items: center; justify-content: center; }
+#preview-img { max-width: 100%; display: block; }
+
+/* 设置面板（同页） */
+.settings-panel { max-width: 980px; margin: 12px auto; padding: 16px; background: #0b0d10; border: 1px solid #1f2329; border-radius: 12px; display: flex; flex-direction: column; gap: 12px; align-items: center; justify-content: center; }
+.settings-panel .row { display: flex; gap: 12px; align-items: center; justify-content: center; flex-wrap: wrap; }
+.settings-panel input[type="text"] { width: 280px; padding: 8px 10px; border-radius: 8px; border: 1px solid #333; background: #14171b; color: #eee; }
